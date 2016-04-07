@@ -5,16 +5,19 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = test_task
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    sqlconnectiondialog.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    sqlconnectiondialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    sqlconnectiondialog.ui

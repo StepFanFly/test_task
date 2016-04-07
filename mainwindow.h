@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "sqlconnectiondialog.h"
+#include <QtWidgets>
+#include <QTSql/QSqlTableModel>
+#include <QTSql/QSql>
 
 namespace Ui {
 class MainWindow;
@@ -14,6 +18,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+private slots:
+    void on_action_triggered();
 
 private:
     Ui::MainWindow *ui;
