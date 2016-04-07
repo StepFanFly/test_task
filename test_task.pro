@@ -14,10 +14,18 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    sqlconnectiondialog.cpp
+    sqlconnectiondialog.cpp \
+    adddialog.cpp \
+    changedialog.cpp \
+    qdateeditnull.cpp
 
 HEADERS  += mainwindow.h \
-    sqlconnectiondialog.h
+    sqlconnectiondialog.h \
+    adddialog.h \
+    changedialog.h \
+    qdateeditnull.h
 
 FORMS    += mainwindow.ui \
-    sqlconnectiondialog.ui
+    sqlconnectiondialog.ui \
+    adddialog.ui \
+    changedialog.ui
