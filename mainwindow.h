@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QObject>
 #include "sqlconnectiondialog.h"
+#include "filtersettinsdialog.h"
 #include "adddialog.h"
 #include <QtWidgets>
 #include <QtSql>
@@ -33,6 +34,10 @@ private slots:
     void on_action_2_triggered();
 
     void on_action_4_triggered();
+
+    void on_buttonFilterSet_clicked();
+
+    void on_buttonResetFilter_clicked();
 
 private:
     Ui::MainWindow *ui;

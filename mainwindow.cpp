@@ -134,3 +134,27 @@ void MainWindow::on_action_4_triggered()
     }
     this->close();
 }
+
+void MainWindow::on_buttonFilterSet_clicked()
+{
+    FilterSettinsDialog dialog(this);
+    if(dialog.exec() != QDialog::Accepted){
+        QMessageBox::warning(this,tr("BRAGH"),tr("WHAT"));
+        return;
+    }
+    QDate datefrom,dateto;
+    datefrom=dialog.dateFrom();
+    dateto=dialog.dateTo();
+
+    QString filter;
+    filter="date_deadline::date >= '"+datefrom.toString("yyyy-MM-dd")+"' AND date_deadline::date <= '"+dateto.toString("yyyy-MM-dd")+"'";
+    QMessageBox::warning(this,tr("BRAGH"),filter);
+    model->setFilter(filter);
+    model->select();
+}
+
+void MainWindow::on_buttonResetFilter_clicked()
+{
+    model->setFilter("");
+    model->select();
+}

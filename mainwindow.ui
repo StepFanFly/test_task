@@ -47,6 +47,20 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="buttonFilterSet">
+        <property name="text">
+         <string>Управление фильтром</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="buttonResetFilter">
+        <property name="text">
+         <string>Сбросить фильтр</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>

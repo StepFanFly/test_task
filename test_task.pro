@@ -16,13 +16,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     sqlconnectiondialog.cpp \
     adddialog.cpp \
-    qdateeditnull.cpp
+    qdateeditnull.cpp \
+    filtersettinsdialog.cpp
 
 HEADERS  += mainwindow.h \
     sqlconnectiondialog.h \
     adddialog.h \
-    qdateeditnull.h
+    qdateeditnull.h \
+    filtersettinsdialog.h
 
 FORMS    += mainwindow.ui \
     sqlconnectiondialog.ui \
-    adddialog.ui
+    adddialog.ui \
+    filtersettinsdialog.ui
