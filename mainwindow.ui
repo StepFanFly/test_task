@@ -41,13 +41,6 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="buttonChange">
-        <property name="text">
-         <string>Изменить запись</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="buttonDelete">
         <property name="text">
          <string>Удалить запись</string>

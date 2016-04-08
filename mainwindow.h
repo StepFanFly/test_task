@@ -5,7 +5,6 @@
 #include <QObject>
 #include "sqlconnectiondialog.h"
 #include "adddialog.h"
-#include "changedialog.h"
 #include <QtWidgets>
 #include <QtSql>
 #include <QtSql/QSqlTableModel>
@@ -22,7 +21,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    bool isConnected;
 
     QSqlError addConnection(const QString &dbName, const QString &host, const QString &user, const QString &passwd, const int port);
     QSqlError addConnection();

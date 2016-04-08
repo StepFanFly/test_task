@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QAction *addnewAction,*changeAction,*deleteAction;
+    QAction *addnewAction,*deleteAction;
     addnewAction = new QAction(QObject::tr("Добавить"),ui->tableView);
     deleteAction = new QAction(QObject::tr("Удалить"),ui->tableView);
 
@@ -57,13 +57,21 @@ void MainWindow::on_action_triggered()
     model = new QSqlTableModel(this, maindb);
     model->setTable("test_table");
     ui->tableView->setModel(model);
-//    ui->tableView->setColumnHidden(6, true);
+    ui->tableView->setColumnHidden(6, true);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableView->setEditTriggers(QAbstractItemView::AllEditTriggers);
 
     model->select();
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Дата создания"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Задача"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Критерий задачи"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Срок выполнения"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Ответственный"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("Дата выполнения"));
+    ui->tableView->setSortingEnabled(true);
     ui->tableView->show();
+
 }
 
 void MainWindow::on_action_2_triggered()
@@ -106,14 +114,21 @@ void MainWindow::newRecord()
 
 void MainWindow::deleteRecord()
 {
+    if(ui->tableView->currentIndex().isValid())
+    {
+        int row=ui->tableView->currentIndex().row();
+        model->removeRow(row);
+        model->submitAll();
+    }
+    model->select();
 
-    QMessageBox::warning(this, tr("SMTHING DELETED!"), tr("YOU KILLED THEM"));
 }
 
 void MainWindow::on_action_4_triggered()
 {
     if(maindb.isOpen())
     {
+        delete(model);
         maindb.close();
         maindb.removeDatabase(QString("test_task"));
     }
