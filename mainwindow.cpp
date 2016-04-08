@@ -8,24 +8,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QAction *addnewAction,*changeAction,*deleteAction;
     addnewAction = new QAction(QObject::tr("Добавить"),ui->tableView);
-    changeAction = new QAction(QObject::tr("Изменить"),ui->tableView);
     deleteAction = new QAction(QObject::tr("Удалить"),ui->tableView);
 
     ui->tableView->addAction(addnewAction);
-    ui->tableView->addAction(changeAction);
     ui->tableView->addAction(deleteAction);
 
     ui->tableView->setContextMenuPolicy(Qt::ActionsContextMenu);
 
     QObject::connect(addnewAction,SIGNAL(triggered()),this,SLOT(newRecord()));
-    QObject::connect(changeAction,SIGNAL(triggered()),this,SLOT(changeRecord()));
     QObject::connect(deleteAction,SIGNAL(triggered()),this,SLOT(deleteRecord()));
 
     QObject::connect(ui->buttonNew,SIGNAL(clicked()),this,SLOT(newRecord()));
-    QObject::connect(ui->buttonChange,SIGNAL(clicked()),this,SLOT(changeRecord()));
     QObject::connect(ui->buttonDelete,SIGNAL(clicked()),this,SLOT(deleteRecord()));
-
-    isConnected=false;
 }
 
 MainWindow::~MainWindow()
@@ -63,11 +57,11 @@ void MainWindow::on_action_triggered()
     model = new QSqlTableModel(this, maindb);
     model->setTable("test_table");
     ui->tableView->setModel(model);
-    ui->tableView->setColumnHidden(7, true);
+//    ui->tableView->setColumnHidden(6, true);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
-    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tableView->horizontalHeader()->setStretchLastSection(true);
+    ui->tableView->setEditTriggers(QAbstractItemView::AllEditTriggers);
+
     model->select();
     ui->tableView->show();
 }
@@ -107,15 +101,12 @@ void MainWindow::newRecord()
     query.bindValue(":date_closed",dateFinished);
     query.exec();
 
-}
-
-void MainWindow::changeRecord()
-{
-    QMessageBox::warning(this, tr("SMTHING CHAGED!"), tr("RUN FOREST RUN"));
+    model->select();
 }
 
 void MainWindow::deleteRecord()
 {
+
     QMessageBox::warning(this, tr("SMTHING DELETED!"), tr("YOU KILLED THEM"));
 }
 

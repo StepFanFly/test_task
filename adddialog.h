@@ -2,6 +2,7 @@
 #define ADDDIALOG_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include <QString>
 #include <QDate>
 
